@@ -7,8 +7,7 @@ h1{
 
 .noscroll{
     height: 100vh;
-    overflow: auto;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 .new_category{
     width: 80%;
@@ -124,6 +123,11 @@ table {
   th, td {
 	text-align: left;
 	padding: 8px;
+  }
+
+  td img{
+    height: 100px;
+    width: 100px;
   }
   
   tr:nth-child(odd){background-color: #f2f2f2}
