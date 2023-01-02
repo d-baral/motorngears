@@ -1,0 +1,149 @@
+h1{
+    font-family: Bahnschrift;
+    color: var(--primary);
+
+}
+
+
+.noscroll{
+    height: 100vh;
+    overflow: auto;
+    margin-bottom: 50px;
+}
+.new_category{
+    width: 80%;
+    margin: auto;
+}
+
+/* .cat-container
+{
+height: 50vh;
+} */
+
+.head-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+label
+{
+  font-family: Bahnschrift;
+}
+
+input, select
+{
+  font-family: Bahnschrift;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 00px;
+  display: inline-block;
+  border: 1pt solid lightgrey;
+  outline: none;
+}
+
+option
+{
+  font-family: Bahnschrift;
+  padding:10px;
+  font-size: 16px;
+}
+
+textarea
+{
+  font-family: Bahnschrift;
+  height: 200px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 00px;
+  display: inline-block;
+  border: 1pt solid lightgrey;
+  outline: none;
+}
+
+input:focus{
+  color: var(--primary);
+  border: 2pt solid var(--secondary);
+}
+
+
+.button{
+  width: 100%;
+  padding: 15px;
+  margin:5px 0 22px 0px;
+  border: none;
+  color: white;
+  background-color: var(--primary);
+  font-weight: bold;
+  font-family: Bahnschrift;
+  font-size: 20px;
+  transition: .3s linear;
+
+}
+.new-post-button
+{
+text-align: center;
+  
+  padding: 15px;
+  margin:50px 0 22px 10px;
+  background-color: var(--primary);
+  transition: .3s linear;
+}
+
+.newpost-btn-link{
+  width: 100%;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-family: Bahnschrift;
+}
+
+.new-post-button:hover{
+  cursor: pointer;
+  transition: .3s linear;
+  background-color: var(--secondary);
+}
+
+.button:hover
+{
+  cursor: pointer;
+  transition: .3s linear;
+  background-color: var(--secondary);
+}
+
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  th{
+	text-align: left;
+	padding: 8px;
+    background-color: var(--secondary);
+	color: white;
+  }
+  th, td {
+	text-align: left;
+	padding: 8px;
+  }
+  
+  tr:nth-child(odd){background-color: #f2f2f2}
+  tr:nth-child(even){background-color: #fae0e4}
+
+.postdescription-column span
+{
+  display: block;
+  height: 35px;
+  overflow: hidden;
+}
+
+
+
+  @media screen and (max-width: 450px) {
+    .noscroll{
+        overflow-y: scroll;
+    }
+    .cat-container
+{
+overflow-x:scroll ;
+}
+  }
