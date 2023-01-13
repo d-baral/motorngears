@@ -1,5 +1,5 @@
 <?php
 session_start();
-    $_SESSION['loginid']=NULL;
-    header('location:index.php');
+unset($_SESSION['loginid']);
+header('location:index.php');
 ?>
