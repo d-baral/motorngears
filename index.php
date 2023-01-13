@@ -33,14 +33,16 @@
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $menu_name = $row["cname"];
-                    ?>
-                    <a href=#><?php echo "$menu_name" ?></a>
+                            ?>
+                    <a href="singlecategorypage.php?cid=<?php echo $row["cid"] ?>">
+                        <?php echo "$menu_name" ?>
+                    </a>
                     <?php
                         }
                     }
                     $conn->close();
                     ?>
-                    <a class="log-btn" href="login.php">LOGIN</a>
+                    <a class=" log-btn" href="login.php">LOGIN</a>
                 </li>
                 </div>
             </ul>
@@ -58,7 +60,7 @@
                 $post_cat_id = $row["post_cat_id"];
                 $pdescription = $row["pdescription"];
                 $image_url = $row["image_url"];
-        ?>
+                ?>
         <div class="news-section">
             <div class="flex">
                 <div class="title"><?php echo $row["ptitle"] ?> </div>

@@ -3,7 +3,6 @@ session_start();
 include 'db_connection.php';
 
 //Adding New Post
-// if(isset($_POST['add_post_button']) && isset($_FILES['feat_image']))
 if (isset($_POST['add_post_button'])) {
 
   $post_title = $_POST['post_title'];

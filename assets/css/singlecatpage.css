@@ -1,0 +1,82 @@
+:root{
+	--primary:#ce112c;
+	--secondary:#221f20;
+  }
+
+  @font-face {
+    font-family: Bahnschrift;
+    src: url('/assets/fonts/BAHNSCHRIFT.TTF');
+  }
+
+.grid-container
+{
+    display: grid;
+    grid-template-columns: repeat(3,33%);
+    grid-template-rows: repeat(3,33%);
+    row-gap: 100px;
+    column-gap: 35px;
+}
+
+.postcatpageimg img
+{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.cat-item h3
+{
+    font-size: 20px;
+      font-family: Bahnschrift;
+      color: var(--primary);
+}
+
+.cat-item-descr
+{
+  max-height: 75px;
+  overflow: hidden;
+}
+
+.cat-item p
+{
+    color: black;
+      font-size: 15px;
+      text-align: justify;
+      font-family: Bahnschrift;
+}
+
+
+.cat-item a
+{ 
+  border: none;
+  text-decoration: none;
+  font-family: Bahnschrift;
+  margin: 5px 0px;
+  display: inline-block;
+  color:white;
+  background-color: var(--primary);
+  padding:10px;
+}
+
+.cat-item a{
+  text-decoration: none;
+  color:white;
+}
+
+.cat-item a:hover{
+  cursor:pointer;
+  text-decoration: none;
+  color:white;
+  background-color: var(--secondary);
+  transition: linear .3s;
+}
+
+
+@media (max-width: 920px) {
+.grid-container{
+  display: block;
+}
+.cat-item{
+  margin-bottom: 20px;
+}
+}
