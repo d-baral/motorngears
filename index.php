@@ -44,7 +44,6 @@
                     ?>
                     <a class=" log-btn" href="login.php">LOGIN</a>
                 </li>
-                </div>
             </ul>
         </nav>
     </header>

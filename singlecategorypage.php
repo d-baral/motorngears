@@ -55,7 +55,6 @@
                     ?>
                     <a class=" log-btn" href="login.php">LOGIN</a>
                 </li>
-                </div>
             </ul>
         </nav>
     </header>
@@ -86,7 +85,7 @@
                         <?php echo $pdescription ?>
                     </p>
                 </div>
-                <a href="#?pid=<?php echo $pid ?>"> Read More </a>
+                <a href="?pid=<?php echo $pid ?>"> Read More </a>
 
             </div>
             <?php
