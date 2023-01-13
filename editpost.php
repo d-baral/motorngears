@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(!isset($_SESSION['loginid']))
+{
+header('location:index.php'); 
+}  
+?>
 <?php
 session_start();
 include 'db_connection.php';

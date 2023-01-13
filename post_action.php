@@ -31,6 +31,7 @@ if (isset($_POST['add_post_button'])) {
           move_uploaded_file($tmp_name, $image_upload_path);
 
 
+
           $sql = "INSERT INTO post(ptitle,pdescription,post_cat_id,image_url)
                 VALUES ('$post_title', '$post_content', '$post_category', '$new_img_name')";
 
