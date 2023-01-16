@@ -34,10 +34,10 @@
                         while ($row = $result->fetch_assoc()) {
                             $menu_name = $row["cname"];
                             ?>
-                    <a href="singlecategorypage.php?cid=<?php echo $row["cid"] ?>">
-                        <?php echo "$menu_name" ?>
-                    </a>
-                    <?php
+                            <a href="singlecategorypage.php?cid=<?php echo $row["cid"] ?>">
+                                <?php echo "$menu_name" ?>
+                            </a>
+                            <?php
                         }
                     }
                     $conn->close();
@@ -56,16 +56,17 @@
         $result1 = $conn->query($sql1);
         if ($result1->num_rows > 0) {
             while ($row = $result1->fetch_assoc()) {
+                $pid = $row["pid"];
                 $post_cat_id = $row["post_cat_id"];
                 $pdescription = $row["pdescription"];
                 $image_url = $row["image_url"];
                 ?>
-        <div class="news-section">
-            <div class="flex">
-                <div class="title"><?php echo $row["ptitle"] ?> </div>
-                <div class="topic">
-                    <a href="#">
-                        <?php
+                <div class="news-section">
+                    <div class="flex">
+                        <div class="title"><?php echo $row["ptitle"] ?> </div>
+                        <div class="topic">
+                            <a href="singlecategorypage.php?cid=<?php echo $post_cat_id ?>">
+                                <?php
                                 $sql2 = "SELECT * FROM post_category";
                                 $result2 = $conn->query($sql2);
                                 if ($result2->num_rows > 0) {
@@ -76,30 +77,30 @@
                                     }
                                 }
                                 ?>
-                    </a>
-                </div>
+                            </a>
+                        </div>
 
-            </div>
-            <div class="feature">
-                <img src="./assets/images/<?php echo $image_url ?>" />
-            </div>
+                    </div>
+                    <div class="feature">
+                        <img src="./assets/images/<?php echo $image_url ?>" />
+                    </div>
 
-            <div class="news">
-                <p>
-                    <?php
+                    <div class="news">
+                        <p>
+                            <?php
                             echo $pdescription;
                             ?>
-                </p>
-            </div>
-            <div class="left-flex">
-                <button class="read-more">
-                    <a href="singlepost.php">READ MORE</a>
-                </button>
+                        </p>
+                    </div>
+                    <div class="left-flex">
+                        <button class="read-more">
+                            <a href="singlepost.php?pid=<?php echo $pid ?>">READ MORE</a>
+                        </button>
 
-            </div>
+                    </div>
 
-        </div>
-        <?php
+                </div>
+                <?php
             }
         }
         ?>

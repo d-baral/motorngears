@@ -6,19 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php
     include 'db_connection.php';
-    $cid = $_GET['cid'];
-    $sql = "SELECT * FROM post_category WHERE cid=$cid";
+    $pid = $_GET['pid'];
+    $sql = "SELECT * FROM post WHERE pid=$pid";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    $tab_name = $row["cname"];
+    $tab_name = $row["ptitle"];
     $conn->close();
     ?>
-    <title>MotorNGears | <?php echo $tab_name ?> </title>
+    <title>
+        <?php echo $tab_name ?>
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/navigation.css">
-    <link rel="stylesheet" href="./assets/css/singlecatpage.css">
+    <link rel="stylesheet" href="./assets/css/singlepostpage.css">
 
 </head>
 
@@ -59,10 +61,10 @@
         </nav>
     </header>
     <div class="main-container">
-        <div class="grid-container">
+      <div class="flex-container">
             <?php
             include 'db_connection.php';
-            $sql = "SELECT * FROM post WHERE post_cat_id=$cid ORDER BY pid DESC";
+            $sql = "SELECT * FROM post WHERE pid=$pid";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -70,31 +72,47 @@
                     $image_url = $row["image_url"];
                     $ptitle = $row["ptitle"];
                     $pdescription = $row["pdescription"];
-                    $pid = $row["pid"];
+                    $post_cat_id = $row["post_cat_id"];
                     ?>
-                    <div class="cat-item">
-                        <div class="postcatpageimg">
-                            <img src="./assets/images/<?php echo $image_url ?>" />
-                        </div>
+
+                    <div class="single-post">
                         <h3>
                             <?php echo $ptitle ?>
                         </h3>
-                        <div class="cat-item-descr">
-                            <p>
-                                <?php echo $pdescription ?>
-                            </p>
-                        </div>
-                        <a href="singlepost.php?pid=<?php echo $pid ?>"> Read More </a>
-
+                        <img src="./assets/images/<?php echo $image_url ?>">
+                        <p>
+                            <?php echo $pdescription ?>
+                        </p>
+                    </div>
+                    <div class="sidebar">
+                        <h4>Latest Posts</h4>
+                        <?php
+                        include 'db_connection.php';
+                        $sql = "SELECT * FROM post ORDER BY pid DESC LIMIT 4";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $image_url = $row["image_url"];
+                                $ptitle = $row["ptitle"];
+                                $pdescription = $row["pdescription"];
+                                ?>
+                            <div class="sidebar-card">
+                            <img src="./assets/images/<?php echo $image_url ?>">
+                            <h2><?php echo $ptitle?></h2>
+                            <p><?php echo $pdescription?></p>
+                            <a href="singlepost.php?pid=<?php echo $row["pid"]?>">Read More</a>
+                            </div>
+                            <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <?php
-
                 }
             }
             $conn->close();
             ?>
-
-        </div>
+      </div>
     </div>
 
 </body>

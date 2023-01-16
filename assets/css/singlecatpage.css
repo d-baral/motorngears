@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: repeat(3,33%);
     grid-template-rows: repeat(3,33%);
-    row-gap: 100px;
+    row-gap: 110px;
     column-gap: 35px;
 }
 

@@ -15,8 +15,6 @@ if (isset($_POST['loginbutton'])) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-
-
             $_SESSION['loginid'] = $row["uid"];
             header('location:dashboard.php');
         }
