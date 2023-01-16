@@ -1,3 +1,9 @@
+<?php
+if (!isset($_GET['cid'])) {
+    header('location:index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

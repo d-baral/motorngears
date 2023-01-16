@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['loginid'])) {
+    header('location:index.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +17,9 @@ session_start();
     <link rel="stylesheet" href="assets/css/cat_form.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script>
-    function confirm_delete() {
-        confirm("Are you sure, you want delete?");
-    }
+        function confirm_delete() {
+            confirm("Are you sure, you want delete?");
+        }
     </script>
 </head>
 
@@ -53,24 +56,24 @@ session_start();
                 </h1>
                 <?php
                 if (isset($_SESSION['post_message'])) {
-                ?>
-                <div class="success">
-                    <?php echo $_SESSION['post_message'];
+                    ?>
+                    <div class="success">
+                        <?php echo $_SESSION['post_message'];
                         unset($_SESSION['post_message']);
                         ?>
-                </div>
-                <?php
+                    </div>
+                    <?php
                 }
                 ?>
                 <?php
                 if (isset($_SESSION['post_delete_message'])) {
-                ?>
-                <div class="error">
-                    <?php echo $_SESSION['post_delete_message'];
+                    ?>
+                    <div class="error">
+                        <?php echo $_SESSION['post_delete_message'];
                         unset($_SESSION['post_delete_message']);
                         ?>
-                </div>
-                <?php
+                    </div>
+                    <?php
                 }
                 ?>
                 <div class="cat-container">
@@ -95,13 +98,17 @@ session_start();
                                 $pid = $row["pid"];
                                 $post_cat_id = $row["post_cat_id"];
                                 $image_url = $row["image_url"];
-                        ?>
-                        <tr>
-                            <td> <?php echo $count . "."; ?></td>
-                            <td> <?php echo $row["ptitle"]; ?></td>
-                            <td class="postdescription-column"> <span><?php echo $row["pdescription"]; ?></span></td>
-                            <td>
-                                <?php
+                                ?>
+                                <tr>
+                                    <td> <?php echo $count . "."; ?></td>
+                                    <td>
+                                        <?php echo $row["ptitle"]; ?>
+                                    </td>
+                                    <td class="postdescription-column"> <span>
+                                            <?php echo $row["pdescription"]; ?>
+                                        </span></td>
+                                    <td>
+                                        <?php
                                         $sql1 = "SELECT * FROM post_category";
                                         $result1 = $conn->query($sql1);
                                         if ($result1->num_rows > 0) {
@@ -113,25 +120,25 @@ session_start();
                                             }
                                         }
                                         ?>
-                            </td>
-                            <td>
-                                <img src="./assets/images/<?php echo $image_url; ?>">
-                            </td>
-                            <td>
-                                <a href="editpost.php?pid=<?php echo $pid; ?>" class="icon-button">
-                                    <img src="./assets/icons/edit.png" alt="Edit Icon">
-                                    </button>
-                            </td>
-                            <td>
-                                <a href="post_action.php?pid=<?php echo $pid; ?>" onclick="confirm_delete();"
-                                    class="icon-button">
-                                    <img src="./assets/icons/delete.png" alt="Delete Icon">
-                                </a>
+                                    </td>
+                                    <td>
+                                        <img src="./assets/images/<?php echo $image_url; ?>">
+                                    </td>
+                                    <td>
+                                        <a href="editpost.php?pid=<?php echo $pid; ?>" class="icon-button">
+                                            <img src="./assets/icons/edit.png" alt="Edit Icon">
+                                            </button>
+                                    </td>
+                                    <td>
+                                        <a href="post_action.php?pid=<?php echo $pid; ?>" onclick="confirm_delete();"
+                                            class="icon-button">
+                                            <img src="./assets/icons/delete.png" alt="Delete Icon">
+                                        </a>
 
-                            </td>
+                                    </td>
 
-                        </tr>
-                        <?php
+                                </tr>
+                                <?php
                             }
                         }
                         $conn->close();
