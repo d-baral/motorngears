@@ -44,8 +44,11 @@
   {
       color: black;
       font-size: 14px;
+      line-height: 1.7;
       text-align: justify;
       font-family: Bahnschrift;
+      max-height: 100px;
+      overflow: hidden;
   
   }
   .topic{

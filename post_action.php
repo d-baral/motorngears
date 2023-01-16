@@ -5,8 +5,8 @@ include 'db_connection.php';
 //Adding New Post
 if (isset($_POST['add_post_button'])) {
 
-  $post_title = $_POST['post_title'];
-  $post_content = $_POST['post_content'];
+  $post_title = $conn->real_escape_string($_POST['post_title']);
+  $post_content = $conn->real_escape_string($_POST['post_content']);
   $post_category = $_POST['post_category'];
 
   if (isset($_FILES['feat_image'])) {
@@ -22,7 +22,7 @@ if (isset($_POST['add_post_button'])) {
       } else {
         $image_extension = pathinfo($img_name, PATHINFO_EXTENSION);
         $image_extension_lowercase = strtolower($image_extension);
-        $allowed_extenion = array("jpg", "jpeg", "png");
+        $allowed_extenion = array("jpg", "jpeg", "png", "webp");
 
         if (in_array($image_extension_lowercase, $allowed_extenion)) {
           $new_img_name = uniqid("IMG-", true) . '.' . $image_extension_lowercase;
@@ -62,8 +62,8 @@ if (isset($_POST['add_post_button'])) {
 //Editing Post
 elseif (isset($_POST['edit_post_button'])) {
   $pid = $_POST['pid'];
-  $post_title = $_POST['post_title'];
-  $post_content = $_POST['post_content'];
+  $post_title = $conn->real_escape_string($_POST['post_title']);
+  $post_content = $conn->real_escape_string($_POST['post_content']);
   $post_category = $_POST['post_category'];
 
   if (isset($_FILES['feat_image'])) {
@@ -79,7 +79,7 @@ elseif (isset($_POST['edit_post_button'])) {
       } else {
         $image_extension = pathinfo($img_name, PATHINFO_EXTENSION);
         $image_extension_lowercase = strtolower($image_extension);
-        $allowed_extenion = array("jpg", "jpeg", "png");
+        $allowed_extenion = array("jpg", "jpeg", "png", "webp");
 
         if (in_array($image_extension_lowercase, $allowed_extenion)) {
           $new_img_name = uniqid("IMG-", true) . '.' . $image_extension_lowercase;
