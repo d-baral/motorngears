@@ -3,9 +3,9 @@ session_start();
 
 include 'db_connection.php';
 
-$user = $_POST['user_name'];
+$user = $conn->real_escape_string($_POST['user_name']);
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = $conn->real_escape_string($_POST['password']);
 
 //login validation logic
 if (isset($_POST['loginbutton'])) {
