@@ -1,9 +1,8 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION['loginid']))
-{
-header('location:index.php'); 
-}  
+if (!isset($_SESSION['loginid'])) {
+    header('location:index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +18,13 @@ header('location:index.php');
     <link rel="stylesheet" href="assets/css/cat_form.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script>
-    function confirm_delete() {
-        if (confirm("Are you sure, you want delete?") == true) {
-            console.log("OK CLicked");
-        } else {
-            console.log("Cancel CLicked");
+        function confirm_delete() {
+            if (confirm("Are you sure, you want delete?") == true) {
+                console.log("OK CLicked");
+            } else {
+                console.log("Cancel CLicked");
+            }
         }
-    }
     </script>
 
 </head>
@@ -65,7 +64,6 @@ header('location:index.php');
                         </label>
                         <input type="text" placeholder="Describe the Category" name="catg_desc" id="catg_desc">
                         <?php
-                        session_start();
                         ?>
 
                         <button class="button" name="add_category_button">
@@ -81,24 +79,24 @@ header('location:index.php');
                 </h1>
                 <?php
                 if (isset($_SESSION['deleted_message'])) {
-                ?>
-                <div class="error">
-                    <?php echo $_SESSION['deleted_message'];
+                    ?>
+                    <div class="error">
+                        <?php echo $_SESSION['deleted_message'];
                         unset($_SESSION['deleted_message']);
                         ?>
-                </div>
-                <?php
+                    </div>
+                    <?php
                 }
                 ?>
                 <?php
                 if (isset($_SESSION['suc_message'])) {
-                ?>
-                <div class="success">
-                    <?php echo $_SESSION['suc_message'];
+                    ?>
+                    <div class="success">
+                        <?php echo $_SESSION['suc_message'];
                         unset($_SESSION['suc_message']);
                         ?>
-                </div>
-                <?php
+                    </div>
+                    <?php
                 }
                 ?>
                 <div class="cat-container">
@@ -119,25 +117,27 @@ header('location:index.php');
                             while ($row = $result->fetch_assoc()) {
                                 $count++;
                                 $cid = $row["cid"];
-                        ?>
-                        <tr>
-                            <td> <?php echo $count . "."; ?></td>
-                            <td> <?php echo $row["cname"]; ?></td>
-                            <td> <?php echo $row["cdescription"]; ?></td>
-                            <td>
-                                <a href="edit_category.php?cid=<?php echo $cid; ?>" class="icon-button">
-                                    <img src="./assets/icons/edit.png" alt="Edit Icon">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="category_action.php?cid=<?php echo $cid; ?>" onclick="confirm_delete();"
-                                    class="icon-button">
-                                    <img src="./assets/icons/delete.png" alt="Delete Icon">
-                                </a>
-                            </td>
+                                ?>
+                                <tr>
+                                    <td> <?php echo $count . "."; ?></td>
+                                    <td>
+                                        <?php echo $row["cname"]; ?>
+                                    </td>
+                                    <td> <?php echo $row["cdescription"]; ?></td>
+                                    <td>
+                                        <a href="edit_category.php?cid=<?php echo $cid; ?>" class="icon-button">
+                                            <img src="./assets/icons/edit.png" alt="Edit Icon">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="category_action.php?cid=<?php echo $cid; ?>" onclick="confirm_delete();"
+                                            class="icon-button">
+                                            <img src="./assets/icons/delete.png" alt="Delete Icon">
+                                        </a>
+                                    </td>
 
-                        </tr>
-                        <?php
+                                </tr>
+                                <?php
                             }
                         }
                         $conn->close();

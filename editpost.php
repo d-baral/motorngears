@@ -1,12 +1,11 @@
-<?php 
-session_start();
-if(!isset($_SESSION['loginid']))
-{
-header('location:index.php'); 
-}  
-?>
 <?php
 session_start();
+if (!isset($_SESSION['loginid'])) {
+    header('location:index.php');
+}
+?>
+<?php
+
 include 'db_connection.php';
 
 if (isset($_GET['pid'])) {
@@ -85,22 +84,22 @@ if (isset($_GET['pid'])) {
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
-                        ?>
-
-                        <?php
-                            while ($row = $result->fetch_assoc()) {
-                                if ($row["cid"] == $_SESSION['givepost_cat_id']) {
                             ?>
-                        <option selected value="<?php echo $row["cid"]; ?>">
-                            <?php echo ($row["cname"]); ?>
-                        </option>
-                        <?php
+
+                            <?php
+                            while ($row = $result->fetch_assoc()) {
+                                if ($row["cid"] == $post_cat_id_fetched) {
+                                    ?>
+                                    <option selected value="<?php echo $row["cid"]; ?>">
+                                        <?php echo ($row["cname"]); ?>
+                                    </option>
+                                    <?php
                                 } else {
-                                ?>
-                        <option value="<?php echo $row["cid"]; ?>">
-                            <?php echo ($row["cname"]); ?>
-                        </option>
-                        <?php
+                                    ?>
+                                    <option value="<?php echo $row["cid"]; ?>">
+                                        <?php echo ($row["cname"]); ?>
+                                    </option>
+                                    <?php
                                 }
                             }
                         }
