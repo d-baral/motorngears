@@ -130,12 +130,12 @@ if (!isset($_SESSION['loginid'])) {
                                             </button>
                                     </td>
                                     <td>
-                                        <a href="post_action.php?pid=<?php echo $pid; ?>" onclick="confirm_delete();"
-                                            class="icon-button">
-                                            <img src="./assets/icons/delete.png" alt="Delete Icon">
-                                        </a>
-
+                                        <?php echo "<a onClick=\" javascript:return confirm('Are You Sure to Delete?');\"href='category_action.php?pid={$row['pid']}'>
+                                Delete
+                                </a>"; ?>
+                                        <!-- <img src='./assets/icons/delete.png' alt='Delete Icon'> -->
                                     </td>
+
 
                                 </tr>
                                 <?php

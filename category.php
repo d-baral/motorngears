@@ -17,16 +17,6 @@ if (!isset($_SESSION['loginid'])) {
     <link rel="stylesheet" href="assets/css/sidemenu.css">
     <link rel="stylesheet" href="assets/css/cat_form.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script>
-        function confirm_delete() {
-            if (confirm("Are you sure, you want delete?") == true) {
-                console.log("OK CLicked");
-            } else {
-                console.log("Cancel CLicked");
-            }
-        }
-    </script>
-
 </head>
 
 <body>
@@ -130,12 +120,11 @@ if (!isset($_SESSION['loginid'])) {
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="category_action.php?cid=<?php echo $cid; ?>" onclick="confirm_delete();"
-                                            class="icon-button">
-                                            <img src="./assets/icons/delete.png" alt="Delete Icon">
-                                        </a>
+                                        <?php echo "<a onClick=\" javascript:return confirm('Are You Sure to Delete?');\"href='category_action.php?cid={$row['cid']}'>
+                                Delete
+                                </a>"; ?>
+                                        <!-- <img src='./assets/icons/delete.png' alt='Delete Icon'> -->
                                     </td>
-
                                 </tr>
                                 <?php
                             }
