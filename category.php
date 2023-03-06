@@ -120,7 +120,7 @@ if (!isset($_SESSION['loginid'])) {
                                         </a>
                                     </td>
                                     <td>
-                                        <?php echo "<a class='icon-button' onClick=\" javascript:return confirm('Are You Sure to Delete?');\"href='category_action.php?cid={$row['cid']}'>
+                                        <?php echo "<a class='icon-button' onClick=\" javascript:return confirm('Are You Sure to Delete?');\"href='category_action.php?cid={$cid}'>
                                 <img src='./assets/icons/delete.png' alt='Delete Icon'>
                                 </a>"; ?>
                                         

@@ -21,6 +21,11 @@
     margin: auto;
   }
 
+  .index-main-container
+  {
+    width: 80%;
+    margin: auto;
+  }
   .main-container
   {
     padding-top: 50px;
